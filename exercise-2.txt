@@ -1,0 +1,77 @@
+mysql> USE decodemtl_addressbook;
+Database changed
+mysql> SHOW TABLES;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| Account                         |
+| AddressBook                     |
+| Entry                           |
+mysql> SHOW TABLES;
++---------------------------------+
+| Tables_in_decodemtl_addressbook |
++---------------------------------+
+| Account                         |
+| AddressBook                     |
+| Entry                           |
++---------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> DESCRIBE Account;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| email      | varchar(255) | YES  |     | NULL    |                |
+| password   | varchar(40)  | YES  |     | NULL    |                |
+| createOn   | datetime     | YES  |     | NULL    |                |
+| midifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO Account (email, password, createOn, midifiedOn)
+    -> VALUES ('fasdf@kdnfl.com', '1234hdf', '2017-04-09', '2017-04-11');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DESCRIBE AddressBook;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| accoundId  | int(11)      | YES  |     | NULL    |                |
+| name       | varchar(255) | YES  |     | NULL    |                |
+| createOn   | datetime     | YES  |     | NULL    |                |
+| midifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO AddressBook (accoundId, name, createOn, midifiedOn)
+    -> VALUES (1, 'John Smith', '2017-04-10', NULL);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DESCRIBE Entry;
++------------------+---------------------------------+------+-----+---------+----------------+
+| Field            | Type                            | Null | Key | Default | Extra          |
++------------------+---------------------------------+------+-----+---------+----------------+
+| id               | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| addressBookId    | int(11)                         | YES  |     | NULL    |                |
+| firstName        | varchar(255)                    | YES  |     | NULL    |                |
+| lastName         | varchar(255)                    | YES  |     | NULL    |                |
+| birthday         | datetime                        | YES  |     | NULL    |                |
+| type             | enum('home','work','other')     | YES  |     | NULL    |                |
+| subtype          | enum('phone','address','email') | YES  |     | NULL    |                |
+| contentLineOne   | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineTwo   | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineThree | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFour  | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFive  | varchar(255)                    | YES  |     | NULL    |                |
++------------------+---------------------------------+------+-----+---------+----------------+
+12 rows in set (0.00 sec)
+
+mysql> INSERT INTO Entry (addressBookId, firstName, | lastName         | varchar(255)                    | YES  |     | NULL    |                |
+    -> \c
+mysql> INSERT INTO Entry (addressBookId, firstName, lastName, birthday, type, subtype)
+    -> VALUES (1, 'John', 'Smith', '1998-03-17', 'home', 'phone');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> 
