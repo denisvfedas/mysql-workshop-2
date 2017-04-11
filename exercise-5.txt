@@ -1,0 +1,15 @@
+mysql> SELECT * FROM Entry;
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+|  1 |             1 | Kim       | Lee      | 1984-05-05 00:00:00 | home  | phone   | NULL           | NULL           | NULL             | NULL            | NULL            |
+|  2 |             2 | Eric      | Small    | 1986-09-11 00:00:00 | work  | address | NULL           | NULL           | NULL             | NULL            | NULL            |
+|  3 |             3 | Simon     | Qu       | 2001-04-28 00:00:00 | other | email   | NULL           | NULL           | NULL             | NULL            | NULL            |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> TRUNCATE TABLE Entry;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT * FROM Entry;
+Empty set (0.00 sec)

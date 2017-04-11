@@ -1,0 +1,49 @@
+-- What is the email of the Account identified by "63"?
+
+mysql> SELECT id, email FROM Account WHERE id = 63;
++----+-------------------------------------------------+
+| id | email                                           |
++----+-------------------------------------------------+
+| 63 | consectetuer.rhoncus.Nullam@temporloremeget.org |
++----+-------------------------------------------------+
+1 row in set (0.00 sec)
+
+
+--What are the names of the AdressBooks belonging to accountId "3"?
+
+mysql> SELECT accountId, name FROM AddressBook WHERE accountId = 3;                                                          
++-----------+---------------------------------+
+| accountId | name                            |
++-----------+---------------------------------+
+|         3 | Donec Incorporated              |
+|         3 | Ipsum Nunc LLC                  |
+|         3 | In Consectetuer Ltd             |
+|         3 | Lacus Aliquam Rutrum Industries |
+|         3 | Ac Ltd                          |
+|         3 | Mauris Consulting               |
+|         3 | Ornare Corporation              |
++-----------+---------------------------------+
+7 rows in set (0.00 sec)
+
+--On which date was the AddressBook titled "Lorem Foundation" created?
+
+mysql> DESCRIBE AddressBook;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| accountId  | int(11)      | NO   |     | NULL    |                |
+| name       | varchar(255) | NO   |     | NULL    |                |
+| createdOn  | datetime     | NO   |     | NULL    |                |
+| modifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT name, createdOn FROM AddressBook WHERE name = 'Lorem Foundation';
++------------------+---------------------+
+| name             | createdOn           |
++------------------+---------------------+
+| Lorem Foundation | 2016-06-26 02:43:41 |
+| Lorem Foundation | 2015-05-04 14:28:16 |
++------------------+---------------------+
+2 rows in set (0.00 sec)
