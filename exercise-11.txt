@@ -1,0 +1,52 @@
+--How many Address Book Entries are not listed as ```other```?
+
+mysql> SELECT id, firstName, lastName, birthday, type FROM Entry WHERE type != 'other';
+
+| 3976 | Plato       | Coffey      | 1983-07-24 06:54:58 | work |
+| 3977 | Amena       | Herring     | 1980-05-28 07:39:29 | work |
+| 3978 | Drake       | Olsen       | 1975-10-01 18:25:45 | work |
+| 3979 | Adam        | Neal        | 1963-09-29 03:01:13 | work |
+| 3980 | Brock       | Key         | 1981-04-10 10:31:51 | work |
+| 3991 | Hashim      | Ray         | 1959-07-31 17:41:48 | home |
+| 3992 | Destiny     | Schneider   | 1981-09-12 09:19:06 | home |
+| 3993 | Elliott     | Dillon      | 1957-05-11 11:11:54 | home |
+| 3994 | Nigel       | Norman      | 1995-12-14 22:01:59 | home |
+| 3995 | Matthew     | Rivera      | 1976-02-17 22:26:27 | home |
+| 3996 | Ciara       | Kemp        | 1983-08-06 11:49:04 | home |
+| 3997 | Paul        | Camacho     | 1947-01-04 18:32:07 | home |
+| 3998 | Mia         | Payne       | 1981-04-21 09:19:57 | home |
+| 3999 | Scarlett    | Santiago    | 1969-06-13 04:22:13 | home |
+| 4000 | Benedict    | Wilson      | 1960-08-18 07:08:16 | home |
++------+-------------+-------------+---------------------+------+
+2800 rows in set (0.00 sec)
+
+--How many Address Book Entries are listed as either ```home``` or ```work```?
+
+SELECT id, firstName, lastName, birthday, type FROM Entry WHERE type = 'home' OR type = 'work';
+
+| 3979 | Adam        | Neal        | 1963-09-29 03:01:13 | work |
+| 3980 | Brock       | Key         | 1981-04-10 10:31:51 | work |
+| 3991 | Hashim      | Ray         | 1959-07-31 17:41:48 | home |
+| 3992 | Destiny     | Schneider   | 1981-09-12 09:19:06 | home |
+| 3993 | Elliott     | Dillon      | 1957-05-11 11:11:54 | home |
+| 3994 | Nigel       | Norman      | 1995-12-14 22:01:59 | home |
+| 3995 | Matthew     | Rivera      | 1976-02-17 22:26:27 | home |
+| 3996 | Ciara       | Kemp        | 1983-08-06 11:49:04 | home |
+| 3997 | Paul        | Camacho     | 1947-01-04 18:32:07 | home |
+| 3998 | Mia         | Payne       | 1981-04-21 09:19:57 | home |
+| 3999 | Scarlett    | Santiago    | 1969-06-13 04:22:13 | home |
+| 4000 | Benedict    | Wilson      | 1960-08-18 07:08:16 | home |
++------+-------------+-------------+---------------------+------+
+2800 rows in set (0.01 sec)
+
+--How many Address Book Entries are listed as ```phones```?
+
+mysql> SELECT id, firstName, lastName, birthday, subtype FROM Entry WHERE subtype = 'phone';
+
+| 598 | Willow     | Simpson     | 1979-11-09 10:39:31 | phone   |
+| 599 | Zenaida    | Kirk        | 1946-01-07 22:27:44 | phone   |
+| 600 | Beau       | Sheppard    | 1946-12-10 10:20:02 | phone   |
++-----+------------+-------------+---------------------+---------+
+600 rows in set (0.00 sec)
+
+

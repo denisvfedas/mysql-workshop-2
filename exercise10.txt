@@ -1,0 +1,55 @@
+--How many Address Book Entries are listed as born before February 12th of 1982?
+
+mysql> describe Entry;
++------------------+---------------------------------+------+-----+---------+----------------+
+| Field            | Type                            | Null | Key | Default | Extra          |
++------------------+---------------------------------+------+-----+---------+----------------+
+| id               | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| addressBookId    | int(11)                         | NO   |     | NULL    |                |
+| firstName        | varchar(255)                    | NO   |     | NULL    |                |
+| lastName         | varchar(255)                    | YES  |     | NULL    |                |
+| birthday         | datetime                        | YES  |     | NULL    |                |
+| type             | enum('home','work','other')     | NO   |     | NULL    |                |
+| subtype          | enum('phone','address','email') | NO   |     | NULL    |                |
+| contentLineOne   | varchar(255)                    | NO   |     | NULL    |                |
+| contentLineTwo   | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineThree | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFour  | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFive  | varchar(255)                    | YES  |     | NULL    |                |
++------------------+---------------------------------+------+-----+---------+----------------+
+12 rows in set (0.01 sec)
+
+SELECT id, addressBookId, firstName, lastName, birthday 
+     FROM Entry 
+     WHERE birthday < '1982-02-12';
+     
+| 3998 |            77 | Mia         | Payne       | 1981-04-21 09:19:57 |
+| 3999 |             9 | Scarlett    | Santiago    | 1969-06-13 04:22:13 |
+| 4000 |            99 | Benedict    | Wilson      | 1960-08-18 07:08:16 |
++------+---------------+-------------+-------------+---------------------+
+2687 rows in set (0.01 sec)
+
+--How many Address Book Entries are listed as born on or after January 1st of 1965?
+
+SELECT id, addressBookId, firstName, lastName, birthday 
+     FROM Entry 
+     WHERE birthday >= '1965-01-01';
+     
+| 3994 |            85 | Nigel       | Norman      | 1995-12-14 22:01:59 |
+| 3995 |            39 | Matthew     | Rivera      | 1976-02-17 22:26:27 |
+| 3996 |            91 | Ciara       | Kemp        | 1983-08-06 11:49:04 |
+| 3998 |            77 | Mia         | Payne       | 1981-04-21 09:19:57 |
+| 3999 |             9 | Scarlett    | Santiago    | 1969-06-13 04:22:13 |
++------+---------------+-------------+-------------+---------------------+
+2597 rows in set (0.01 sec)
+
+--Which Address Book Entry is listed as being the oldest of age?
+
+mysql> SELECT id, firstName, lastName, MIN(birthday) FROM Entry;
++----+-----------+----------+---------------------+
+| id | firstName | lastName | MIN(birthday)       |
++----+-----------+----------+---------------------+
+|  1 | Herrod    | Conrad   | 1945-09-02 09:21:58 |
++----+-----------+----------+---------------------+
+1 row in set (0.00 sec)
+

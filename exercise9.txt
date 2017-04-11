@@ -13,6 +13,19 @@ mysql> SHOW TABLES;
 +----------------------------------------+
 3 rows in set (0.00 sec)
 
+-- How many Accounts exist?
+
+mysql> SELECT MAX(id) FROM Account;
++---------+
+| MAX(id) |
++---------+
+|    1000 |
++---------+
+1 row in set (0.00 sec)
+
+--How many Address Books exist?
+
+
 SELECT * FROM AddressBook;
 
 
@@ -32,3 +45,15 @@ mysql> SELECT MAX(id) FROM AddressBook;
 |    1100 |
 +---------+
 1 row in set (0.00 sec)
+
+
+--How many Address Book Entries exist?
+
+mysql> SELECT MAX(id) FROM Entry;
++---------+
+| MAX(id) |
++---------+
+|    4000 |
++---------+
+1 row in set (0.00 sec)
+
