@@ -74,4 +74,10 @@ mysql> INSERT INTO Entry (addressBookId, firstName, lastName, birthday, type, su
     -> VALUES (1, 'John', 'Smith', '1998-03-17', 'home', 'phone');
 Query OK, 1 row affected (0.01 sec)
 
+mysql> INSERT INTO Entry(addressBookId, firstName, lastName, birthday, type, subtype)
+    -> VALUES (2, 'Ivan', 'Kelly', '2004-06-02', 'work', 'address'), 
+    -> (3, 'David', 'Thompson', '1995-08-01', 'other', 'email');
+Query OK, 2 rows affected (0.02 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
 mysql> 
