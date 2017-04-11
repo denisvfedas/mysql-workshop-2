@@ -1,0 +1,76 @@
+mysql> SELECT * FROM Account;
++----+-----------------+----------+---------------------+---------------------+
+mysql> exit
+Bye
+mysql> SELECT * FROM Account;
++----+-----------------+----------+---------------------+---------------------+
+| id | email           | password | createOn            | midifiedOn          |
++----+-----------------+----------+---------------------+---------------------+
+|  1 | fasdf@kdnfl.com | 1234hdf  | 2017-04-09 00:00:00 | 2017-04-11 00:00:00 |
++----+-----------------+----------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE Account SET email ='qnfsdlk@nkdf.com', password = '5432ndk', createOn = '2017-04-10'
+    -> WHERE id = 1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM Account;
++----+------------------+----------+---------------------+---------------------+
+| id | email            | password | createOn            | midifiedOn          |
++----+------------------+----------+---------------------+---------------------+
+|  1 | qnfsdlk@nkdf.com | 5432ndk  | 2017-04-10 00:00:00 | 2017-04-11 00:00:00 |
++----+------------------+----------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM AddressBook;
++----+-----------+------------+---------------------+------------+
+| id | accoundId | name       | createOn            | midifiedOn |
++----+-----------+------------+---------------------+------------+
+|  1 |         1 | John Smith | 2017-04-10 00:00:00 | NULL       |
++----+-----------+------------+---------------------+------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE AddressBook SET accountId = 2, name = 'Mark Lee', midifiedOn = '2017-04-11'
+    -> WHERE id = 1;
+ERROR 1054 (42S22): Unknown column 'accountId' in 'field list'
+mysql> UPDATE AddressBook SET accoundId = 2, name = 'Mark Lee', midifiedOn = '2017-04-11' WHERE id = 1;                      
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM AddressBook;
++----+-----------+----------+---------------------+---------------------+
+| id | accoundId | name     | createOn            | midifiedOn          |
++----+-----------+----------+---------------------+---------------------+
+|  1 |         2 | Mark Lee | 2017-04-10 00:00:00 | 2017-04-11 00:00:00 |
++----+-----------+----------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM Entry;
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+|  1 |             1 | John      | Smith    | 1998-03-17 00:00:00 | home  | phone   | NULL           | NULL           | NULL             | NULL            | NULL            |
+|  2 |             2 | Ivan      | Kelly    | 2004-06-02 00:00:00 | work  | address | NULL           | NULL           | NULL             | NULL            | NULL            |
+|  3 |             3 | David     | Thompson | 1995-08-01 00:00:00 | other | email   | NULL           | NULL           | NULL             | NULL            | NULL            |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
+
+
+mysql> INSERT INTO Entry (id, firstName, lastName, birthday)
+    -> VALUES(1, 'Kim', 'Lee', '1984-05-05'), (2, 'Eric', 'Small', '1986-09-11'), (3, 'Simon', 'Qu', '2001-04-28')
+    -> ON DUPLICATE KEY UPDATE firstName = VALUES (firstName), lastName = VALUES (lastName), birthday = VALUES (birthday);
+Query OK, 6 rows affected (0.01 sec)
+Records: 3  Duplicates: 3  Warnings: 0
+
+mysql> SELECT * FROM Entry;
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+|  1 |             1 | Kim       | Lee      | 1984-05-05 00:00:00 | home  | phone   | NULL           | NULL           | NULL             | NULL            | NULL            |
+|  2 |             2 | Eric      | Small    | 1986-09-11 00:00:00 | work  | address | NULL           | NULL           | NULL             | NULL            | NULL            |
+|  3 |             3 | Simon     | Qu       | 2001-04-28 00:00:00 | other | email   | NULL           | NULL           | NULL             | NULL            | NULL            |
++----+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> 
